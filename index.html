@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Extra Classes - Small Batch Tuition with Personal Attention. Online & Offline Classes for Class 1 to Class 8 with monthly progress reports.">
+  <title>Extra Classes | Small Batch Tuition with Personal Attention</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="components.js" defer></script>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="section section-gradient" style="min-height: 100vh; display: flex; align-items: center; padding-top: 80px;">
+    <div class="container fade-in-section">
+      <div class="grid-2" style="align-items: center; gap: 40px;">
+        <div style="text-align: left;">
+          <h1 class="display-1" style="max-width: 900px; margin-bottom: 20px;">Small Batch Tuition with <span style="color: var(--color-accent-blue)">Personal Attention</span></h1>
+          <p class="display-2" style="font-size: 1.5rem; font-weight: 500; color: var(--color-dark-blue); margin-bottom: 24px;">Online & Offline Classes for Class 1 to Class 8</p>
+          
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
+            <span style="font-weight: 500; color: var(--color-dark-grey); background: white; padding: 5px 15px; border-radius: 20px;">✓ Monthly Tests</span>
+            <span style="font-weight: 500; color: var(--color-dark-grey); background: white; padding: 5px 15px; border-radius: 20px;">✓ Progress Reports</span>
+            <span style="font-weight: 500; color: var(--color-dark-grey); background: white; padding: 5px 15px; border-radius: 20px;">✓ Homework Support</span>
+            <span style="font-weight: 600; color: var(--color-accent-blue); background: white; padding: 5px 15px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,102,204,0.1);">✓ 2 Free Demo Classes</span>
+          </div>
+          
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <button class="btn btn-primary" style="padding: 16px 32px; font-size: 1.1rem;" onclick="openModal('studentModal')">Register Here (For Students)</button>
+            <button class="btn btn-secondary" style="padding: 16px 32px; font-size: 1.1rem;" onclick="openModal('teacherModal')">Join Us (For Teachers)</button>
+          </div>
+        </div>
+        <div style="text-align: center; position: relative;">
+          <!-- Decorative circle background -->
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; padding-bottom: 80%; background: var(--color-light-blue); border-radius: 50%; z-index: 1;"></div>
+          <img src="images/hero.png" alt="Online Education Technology" style="position: relative; z-index: 2; max-width: 100%; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-lg); background: white; border: 8px solid white;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Program -->
+  <section class="section section-light">
+    <div class="container fade-in-section">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2 class="display-2" style="margin-bottom: 30px;">About the Program</h2>
+        <p style="font-size: 1.25rem;">
+          <strong>Extra Classes</strong> is a managed tuition platform offering small batch online and offline tuition for students from Class 1 to Class 8. We ensure your child receives personal attention, structured learning, monthly assessments, and detailed progress reports for guaranteed improvement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP Section -->
+  <section class="section section-soft">
+    <div class="container">
+      <h2 class="display-2 text-center" style="margin-bottom: 60px;">Why Choose Extra Classes?</h2>
+      
+      <div class="grid-3" style="margin-bottom: 40px;">
+        <!-- USP Items -->
+        <div class="card fade-in-section">
+          <div class="card-icon">👥</div>
+          <h3>Small Batch Size</h3>
+          <p>Maximum 5 students per batch ensuring true personal attention and doubt solving.</p>
+        </div>
+        <div class="card fade-in-section" style="transition-delay: 100ms;">
+          <div class="card-icon">🎯</div>
+          <h3>Personal Attention</h3>
+          <p>Each student's learning pace is respected and catered to by expert verified teachers.</p>
+        </div>
+        <div class="card fade-in-section" style="transition-delay: 200ms;">
+          <div class="card-icon">📝</div>
+          <h3>Monthly Assessment</h3>
+          <p>Regular tests to track improvement and identify areas needing extra focus.</p>
+        </div>
+        <div class="card fade-in-section" style="transition-delay: 300ms;">
+          <div class="card-icon">📊</div>
+          <h3>Progress Report</h3>
+          <p>Monthly detailed reports shared directly with parents to track academic journey.</p>
+        </div>
+        <div class="card fade-in-section" style="transition-delay: 400ms;">
+          <div class="card-icon">📚</div>
+          <h3>Homework Support</h3>
+          <p>Dedicated 15 minutes of every class specifically for regular school homework & doubts.</p>
+        </div>
+        <div class="card fade-in-section" style="transition-delay: 500ms;">
+          <div class="card-icon">🎁</div>
+          <h3>2 Free Demo Classes</h3>
+          <p>Experience our teaching methodology risk-free before making a commitment.</p>
+        </div>
+      </div>
+      
+      <div class="grid-3 fade-in-section">
+        <div class="card">
+          <div class="card-icon">👨‍🏫</div>
+          <h3>Verified Teachers</h3>
+          <p>Highly qualified, experienced, and background-verified teaching professionals.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <h3>Online & Offline</h3>
+          <p>Flexible learning modes to suit your geographical and personal convenience.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Parent Feedback</h3>
+          <p>A structured system for regular communication between parents and teachers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Offered -->
+  <section class="section section-light">
+    <div class="container fade-in-section text-center">
+      <h2 class="display-2" style="margin-bottom: 30px;">Courses Offered</h2>
+      
+      <div style="margin-bottom: 50px;">
+        <img src="images/courses.png" alt="Educational Subjects Overview" style="max-width: 80%; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md);">
+      </div>
+      
+      <div class="grid-2" style="max-width: 900px; margin: 0 auto;">
+        <div class="card" style="box-shadow: var(--shadow-md); border-top: 4px solid var(--color-accent-blue);">
+          <h3 style="font-size: 2rem; margin-bottom: 20px;">Primary Classes</h3>
+          <div style="font-size: 1.2rem; color: var(--color-accent-blue); font-weight: 600; margin-bottom: 20px;">Class 1 to Class 5</div>
+          <p style="font-size: 1.1rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px;">All Core Subjects</p>
+          <ul style="text-align: left; margin-top: 20px; font-size: 1.1rem; line-height: 1.8;">
+            <li>✓ Mathematics</li>
+            <li>✓ Environmental Studies (EVS) / Science</li>
+            <li>✓ English</li>
+            <li>✓ Hindi</li>
+          </ul>
+        </div>
+        <div class="card" style="box-shadow: var(--shadow-md); border-top: 4px solid var(--color-dark-blue);">
+          <h3 style="font-size: 2rem; margin-bottom: 20px;">Middle School</h3>
+          <div style="font-size: 1.2rem; color: var(--color-dark-blue); font-weight: 600; margin-bottom: 20px;">Class 6 to Class 8</div>
+          <p style="font-size: 1.1rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px;">Subject-Specific Expertise</p>
+          <ul style="text-align: left; margin-top: 20px; font-size: 1.1rem; line-height: 1.8;">
+            <li>✓ Mathematics</li>
+            <li>✓ Science</li>
+            <li>✓ English</li>
+            <li>✓ Social Studies</li>
+            <li>✓ All Subjects Package Available</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section-soft fade-in-section">
+    <div class="container">
+      <h2 class="display-2 text-center" style="margin-bottom: 60px;">How It Works</h2>
+      
+      <div class="grid-2" style="align-items: center; gap: 40px;">
+        <div style="display: flex; flex-direction: column; gap: 20px; position: relative;">
+          <!-- Timeline Item 1 -->
+          <div style="display: flex; gap: 20px; background: var(--color-white); padding: 24px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+            <div style="background: var(--color-light-blue); color: var(--color-accent-blue); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">1</div>
+            <div>
+              <h3 style="margin-bottom: 8px;">Register on WhatsApp</h3>
+              <p style="margin-bottom: 0;">Reach out via WhatsApp or submit the simple contact form on our website to initiate the process.</p>
+            </div>
+          </div>
+          <!-- Timeline Item 2 -->
+          <div style="display: flex; gap: 20px; background: var(--color-white); padding: 24px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+            <div style="background: var(--color-light-blue); color: var(--color-accent-blue); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">2</div>
+            <div>
+              <h3 style="margin-bottom: 8px;">Book Free Demo</h3>
+              <p style="margin-bottom: 0;">Our academic counselor will understand your child's needs and schedule a personalized demo class.</p>
+            </div>
+          </div>
+          <!-- Timeline Item 3 -->
+          <div style="display: flex; gap: 20px; background: var(--color-white); padding: 24px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+            <div style="background: var(--color-light-blue); color: var(--color-accent-blue); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">3</div>
+            <div>
+              <h3 style="margin-bottom: 8px;">Attend Demo Classes</h3>
+              <p style="margin-bottom: 0;">Experience our innovative teaching philosophy with 2 free comprehensive demo classes.</p>
+            </div>
+          </div>
+          <!-- Timeline Item 4 -->
+          <div style="display: flex; gap: 20px; background: var(--color-white); padding: 24px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+            <div style="background: var(--color-light-blue); color: var(--color-accent-blue); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">4</div>
+            <div>
+              <h3 style="margin-bottom: 8px;">Join Small Batch</h3>
+              <p style="margin-bottom: 0;">Upon satisfaction, your child will be grouped in a highly focused batch of maximum 5 students.</p>
+            </div>
+          </div>
+          <!-- Timeline Item 5 -->
+          <div style="display: flex; gap: 20px; background: var(--color-white); padding: 24px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+            <div style="background: var(--color-light-blue); color: var(--color-accent-blue); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">5</div>
+            <div>
+              <h3 style="margin-bottom: 8px;">Monthly Tests & Progress Reports</h3>
+              <p style="margin-bottom: 0;">Continuous tracking of academic growth through structured tests and detailed parental reporting.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div style="text-align: center;">
+          <img src="images/infographic.png" alt="Learning Journey Infographic" style="max-width: 100%; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); border: 8px solid white;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-gradient">
+    <div class="container text-center fade-in-section">
+      <h2 class="display-2" style="margin-bottom: 30px;">Ready to unlock your child's potential?</h2>
+      <button class="btn btn-primary" style="padding: 18px 40px; font-size: 1.25rem;" onclick="openModal('studentModal')">Book Free Demo Class Today</button>
+    </div>
+  </section>
+
+</body>
+</html>

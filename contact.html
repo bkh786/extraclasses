@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Extra Classes to book a free demo class, join as a teacher, or inquire about our small batch online and offline tuitions.">
+  <title>Contact Us | Extra Classes</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="components.js" defer></script>
+</head>
+<body>
+  <!-- Header Padding -->
+  <div style="padding-top: 80px;"></div>
+
+  <section class="section section-light pt-0 mt-0">
+    <div class="container fade-in-section">
+      <div class="grid-2" style="align-items: center; margin-bottom: 60px;">
+        <div style="text-align: left;">
+          <h1 class="display-1" style="margin-bottom: 20px;">Get in Touch</h1>
+          <p class="display-2" style="font-size: 1.25rem; color: var(--color-dark-grey); font-weight: 400;">
+            We're here to answer any questions you have about our structured tuition plans. Reach out to us instantly for a demo or career inquiry.
+          </p>
+        </div>
+        <div style="text-align: center;">
+          <img src="images/contact_support.png" alt="Customer Support Interface" style="max-width: 90%; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md);">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Contact Info & QR -->
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+          <!-- Quick Info Cards -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; gap: 20px; align-items: flex-start; padding: 24px; background: var(--color-soft-grey); border-radius: var(--border-radius-lg);">
+              <div style="background: var(--color-white); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--color-accent-blue); box-shadow: var(--shadow-sm); flex-shrink: 0;">📞</div>
+              <div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Phone & WhatsApp</h3>
+                <p style="margin-bottom: 0; font-size: 1.1rem; color: var(--color-dark-blue); font-weight: 500;">+91 9064435909</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; gap: 20px; align-items: flex-start; padding: 24px; background: var(--color-soft-grey); border-radius: var(--border-radius-lg);">
+              <div style="background: var(--color-white); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--color-accent-blue); box-shadow: var(--shadow-sm); flex-shrink: 0;">✉️</div>
+              <div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Email</h3>
+                <p style="margin-bottom: 0; font-size: 1.1rem; color: var(--color-dark-blue); font-weight: 500;"><a href="mailto:bikash.roy@zohomail.in" style="color: inherit;">bikash.roy@zohomail.in</a></p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 20px; align-items: flex-start; padding: 24px; background: var(--color-soft-grey); border-radius: var(--border-radius-lg);">
+              <div style="background: var(--color-white); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--color-accent-blue); box-shadow: var(--shadow-sm); flex-shrink: 0;">📍</div>
+              <div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Location</h3>
+                <p style="margin-bottom: 0; font-size: 1rem; color: var(--color-dark-blue);">Global Online Operations<br>Local Offline Centers Available</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Support Commitment Section -->
+          <div style="background: var(--color-accent-blue); padding: 40px; border-radius: var(--border-radius-xl); text-align: left; color: var(--color-white); box-shadow: var(--shadow-md);">
+            <h3 style="color: var(--color-white); margin-bottom: 20px;">Our Commitment</h3>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">
+              <li style="display: flex; gap: 12px; align-items: center;">
+                <span style="background: rgba(255,255,255,0.2); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                <span>Response within 2 hours</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: center;">
+                <span style="background: rgba(255,255,255,0.2); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                <span>Personalized counselor support</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: center;">
+                <span style="background: rgba(255,255,255,0.2); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                <span>Free academic evaluation</span>
+              </li>
+            </ul>
+            <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.9;">We are dedicated to providing the best learning experience for your child.</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="card" style="box-shadow: var(--shadow-lg);">
+          <h2 style="font-size: 2rem; margin-bottom: 10px;">Send us a message</h2>
+          <p style="margin-bottom: 30px;">Fill out the form below and we will get back to you immediately.</p>
+          
+          <form onsubmit="submitContactPageForm(event)">
+            <div class="form-group">
+              <label class="form-label">Student Name *</label>
+              <input type="text" id="c_student_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Parent Name *</label>
+              <input type="text" id="c_parent_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number *</label>
+              <input type="tel" id="c_phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email ID *</label>
+              <input type="email" id="c_email" class="form-control" required>
+            </div>
+            <div class="grid-2" style="gap: 20px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Class *</label>
+                <select id="c_class" class="form-control" required>
+                  <option value="">Select Class</option>
+                  <option value="Class 1">Class 1</option>
+                  <option value="Class 2">Class 2</option>
+                  <option value="Class 3">Class 3</option>
+                  <option value="Class 4">Class 4</option>
+                  <option value="Class 5">Class 5</option>
+                  <option value="Class 6">Class 6</option>
+                  <option value="Class 7">Class 7</option>
+                  <option value="Class 8">Class 8</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Mode</label>
+                <select id="c_mode" class="form-control">
+                  <option value="Online">Online</option>
+                  <option value="Offline">Offline</option>
+                  <option value="Undecided">Undecided</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+              <label class="form-label">Subjects interested in * (Select all that apply)</label>
+              <div class="checkbox-group" id="c_subjects_group">
+                <label class="checkbox-item"><input type="checkbox" name="c_subject" value="All Subject"> All Subject</label>
+                <label class="checkbox-item"><input type="checkbox" name="c_subject" value="English"> English</label>
+                <label class="checkbox-item"><input type="checkbox" name="c_subject" value="Hindi"> Hindi</label>
+                <label class="checkbox-item"><input type="checkbox" name="c_subject" value="Maths"> Maths</label>
+                <label class="checkbox-item"><input type="checkbox" name="c_subject" value="Science"> Science</label>
+                <label class="checkbox-item"><input type="checkbox" name="c_subject" value="Social Science"> Social Science</label>
+                <label class="checkbox-item"><input type="checkbox" name="c_subject" value="Computers"> Computers</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Message</label>
+              <textarea id="c_message" class="form-control" placeholder="Any specific requirements or questions?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.1rem;">Send via WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    async function submitContactPageForm(event) {
+      event.preventDefault();
+      
+      const submitBtn = event.target.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerText;
+      submitBtn.innerText = "Processing...";
+      submitBtn.disabled = true;
+
+      const sName = document.getElementById('c_student_name').value;
+      const pName = document.getElementById('c_parent_name').value;
+      const email = document.getElementById('c_email').value;
+      const phone = document.getElementById('c_phone').value;
+      const cls = document.getElementById('c_class').value || 'Not specified';
+      const mode = document.getElementById('c_mode').value;
+      
+      // Get selected subjects
+      const subjectCheckboxes = document.querySelectorAll('input[name="c_subject"]:checked');
+      const subsArray = Array.from(subjectCheckboxes).map(cb => cb.value);
+      const subs = subsArray.length > 0 ? subsArray.join(', ') : 'Not specified';
+      
+      const msg = document.getElementById('c_message').value || 'No additional message';
+      
+      const payload = {
+        type: 'student',
+        name: `${sName} (Parent: ${pName})`,
+        email: email,
+        phone: phone,
+        class: cls,
+        mode: mode,
+        subjects: subs
+      };
+
+      // 1. Send data to Google Sheets silently via POST
+      // GOOGLE_SCRIPT_URL is defined in components.js
+      try {
+        if (typeof GOOGLE_SCRIPT_URL !== 'undefined') {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(payload)
+          });
+        }
+      } catch (error) {
+        console.error("Error logging to Google Sheets", error);
+      }
+
+      const whatsappMsg = `*Website Inquiry*\n\n*Parent:* ${pName}\n*Student:* ${sName}\n*Email:* ${email}\n*Phone:* ${phone}\n*Class:* ${cls}\n*Mode:* ${mode}\n*Subjects:* ${subs}\n\n*Message:*\n${msg}`;
+      
+      const encodedMsg = encodeURIComponent(whatsappMsg);
+      // Using global WHATSAPP_NUMBER defined in components.js
+      window.open(`https://wa.me/${typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : '919064435909'}?text=${encodedMsg}`, '_blank');
+      
+      submitBtn.innerText = originalBtnText;
+      submitBtn.disabled = false;
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
