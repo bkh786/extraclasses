@@ -6,8 +6,8 @@ const navbarHTML = `
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar-brand">
-        <img src="images/extraclasses_logo.png" alt="Extra Classes Logo" style="height: 44px; vertical-align: middle; margin-right: 8px; border-radius: 8px; mix-blend-mode: multiply;">
-        <span style="vertical-align: middle; font-weight: 700;">Extra Classes</span>
+        <img src="images/Special5-logo.png" alt="Special5 Logo" style="height: 44px; vertical-align: middle; margin-right: 8px; border-radius: 8px; mix-blend-mode: multiply;">
+        <span style="vertical-align: middle; font-weight: 700;">Special5</span>
       </a>
       <div class="navbar-nav" id="navbarNav">
         <a href="index.html" class="nav-link">Home</a>
@@ -30,10 +30,10 @@ const footerHTML = `
       <div class="footer-grid">
         <div class="footer-col" style="text-align: left;">
           <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-            <img src="images/extraclasses_logo.png" alt="Extra Classes Logo" style="height: 64px; width: 64px; object-fit: contain; border-radius: 12px; mix-blend-mode: multiply; background: white; padding: 6px;">
-            <h3 style="margin-bottom: 0; font-size: 1.6rem;">Extra Classes</h3>
+            <img src="images/Special5-logo.png" alt="Special5 Logo" style="height: 64px; width: 64px; object-fit: contain; border-radius: 12px; mix-blend-mode: multiply; background: white; padding: 6px;">
+            <h3 style="margin-bottom: 0; font-size: 1.6rem;">Special5</h3>
           </div>
-          <p style="font-size: 0.95rem; line-height: 1.6; max-width: 300px;">Your online learning partner!</p>
+          <p style="font-size: 0.95rem; line-height: 1.6; max-width: 300px;">Attention...Online Academics...Knowledge</p>
         </div>
         <div class="footer-col" style="padding-top: 10px;">
           <h4 style="font-size: 1.1rem; color: var(--color-accent-blue);">Quick Links</h4>
@@ -54,7 +54,7 @@ const footerHTML = `
         </div>
       </div>
       <div class="footer-bottom">
-        &copy; ${new Date().getFullYear()} Extra Classes. All rights reserved.
+        &copy; ${new Date().getFullYear()} Special5. All rights reserved.
       </div>
     </div>
   </footer>
@@ -69,7 +69,7 @@ const floatingButtonsHTML = `
   </button>
   <button class="floating-btn floating-btn-student attractive-btn" onclick="openModal('studentModal')">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-    <span class="btn-text">Book Extra Class</span>
+    <span class="btn-text">Book Special Class</span>
   </button>
   <button class="floating-btn floating-btn-whyus attractive-btn" onclick="openModal('whyUsModal')">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -202,19 +202,19 @@ const floatingButtonsHTML = `
       <button class="modal-close" onclick="closeModal('whyUsModal')">&times;</button>
       
       <div style="font-size: 1.1rem; line-height: 1.7; color: var(--color-dark-blue);">
-        <h2 style="color: var(--color-accent-blue); font-size: 2.2rem; margin-bottom: 5px;">Why Choose Extra Classes</h2>
+        <h2 style="color: var(--color-accent-blue); font-size: 2.2rem; margin-bottom: 5px;">Why Choose Special5</h2>
         <h3 style="font-size: 1.2rem; color: var(--color-dark-grey); margin-bottom: 20px;">Not Just Tuition. A Structured Academic Support System.</h3>
         
         <hr style="margin: 30px 0; border-top: 1px solid rgba(0,0,0,0.1);">
         
-        <h2 style="font-size: 1.8rem; margin-bottom: 20px;">Extra Classes vs Traditional Tuition</h2>
+        <h2 style="font-size: 1.8rem; margin-bottom: 20px;">Special5 vs Traditional Tuition</h2>
         
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; border: 1px solid rgba(0,0,0,0.1);">
           <thead>
             <tr style="background: var(--color-accent-blue); color: white;">
               <th style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Feature</th>
               <th style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Traditional Tuition</th>
-              <th style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Extra Classes</th>
+              <th style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Special5</th>
             </tr>
           </thead>
           <tbody>
@@ -267,7 +267,7 @@ const floatingButtonsHTML = `
         </table>
         
         <h2 style="font-size: 1.8rem; margin-bottom: 20px;">Message to Parents</h2>
-        <p>If you are looking for Personal attention for your child, Small batch tuition, Regular tests and progress reports, Homework and school support, and Structured academic improvement, then <strong>Extra Classes</strong> is the right place for your child.</p>
+        <p>If you are looking for Personal attention for your child, Small batch tuition, Regular tests and progress reports, Homework and school support, and Structured academic improvement, then <strong>Special5</strong> is the right place for your child.</p>
         <p style="font-size: 1.3rem; font-weight: bold; color: var(--color-accent-blue); text-align: center; margin: 30px 0;">Give your child the advantage of learning in a small batch with personal attention.</p>
         
         <div style="text-align: center; margin-bottom: 40px;">
@@ -306,7 +306,7 @@ const floatingButtonsHTML = `
         <p>Each class includes homework support + concept teaching + practice in a structured format.</p>
         
         <h3 style="color: var(--color-accent-blue); margin-top: 25px;">10. Focus on Academic Improvement</h3>
-        <p>Our goal is not just teaching, but improving marks, concepts, and student confidence. <strong>Extra Classes is a complete academic support system.</strong></p>
+        <p>Our goal is not just teaching, but improving marks, concepts, and student confidence. <strong>Special5 is a complete academic support system.</strong></p>
 
       </div>
     </div>
@@ -449,7 +449,7 @@ async function submitToWhatsApp(event, type) {
     payload.phone = phone;
     payload.mode = mode;
     
-    message = `*Teacher Application*\n\n*Name:* ${name}\n*Email:* ${email}\n*Qualification:* ${qual}\n*Subjects:* ${subs}\n*Classes:* ${classes}\n*Experience:* ${exp} Years\n*Mode:* ${mode}\n*Phone:* ${phone}\n\nI want to join Extra Classes as a teacher.`;
+    message = `*Teacher Application*\n\n*Name:* ${name}\n*Email:* ${email}\n*Qualification:* ${qual}\n*Subjects:* ${subs}\n*Classes:* ${classes}\n*Experience:* ${exp} Years\n*Mode:* ${mode}\n*Phone:* ${phone}\n\nI want to join Special5 as a teacher.`;
   }
   
   // 1. Send data to Google Sheets silently via POST
