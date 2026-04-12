@@ -315,6 +315,16 @@ const floatingButtonsHTML = `
 
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
+  // Inject Botpress Chatbot
+  const botpressScript = document.createElement('script');
+  botpressScript.src = "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
+  document.head.appendChild(botpressScript);
+
+  const botpressConfig = document.createElement('script');
+  botpressConfig.src = "https://files.bpcontent.cloud/2026/04/12/07/20260412074840-JPHH5AD4.js";
+  botpressConfig.defer = true;
+  document.head.appendChild(botpressConfig);
+
   // Inject Components
   const body = document.body;
   
