@@ -6,8 +6,7 @@ const navbarHTML = `
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar-brand">
-        <img src="images/Special5-logo.png" alt="Special5 Logo" style="height: 44px; vertical-align: middle; margin-right: 8px; border-radius: 8px; mix-blend-mode: multiply;">
-        <span style="vertical-align: middle; font-weight: 700;">Special5</span>
+        <img src="images/Special5-logo.png" alt="Special5 Logo" style="height: 44px; vertical-align: middle; border-radius: 8px; mix-blend-mode: multiply;">
       </a>
       <div class="navbar-nav" id="navbarNav">
         <a href="index.html" class="nav-link">Home</a>
@@ -15,6 +14,7 @@ const navbarHTML = `
         <a href="contact.html" class="nav-link">Contact Us</a>
         <a href="online-classes.html" class="nav-link">Why Online Classes</a>
         <a href="faq.html" class="nav-link">FAQ</a>
+        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 15px;" onclick="openModal('studentModal')">Book a Demo Class</button>
       </div>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
@@ -33,7 +33,7 @@ const footerHTML = `
             <img src="images/Special5-logo.png" alt="Special5 Logo" style="height: 64px; width: 64px; object-fit: contain; border-radius: 12px; mix-blend-mode: multiply; background: white; padding: 6px;">
             <h3 style="margin-bottom: 0; font-size: 1.6rem;">Special5</h3>
           </div>
-          <p style="font-size: 0.95rem; line-height: 1.6; max-width: 300px;">Attention...Online Academics...Knowledge</p>
+          <p style="font-size: 0.95rem; line-height: 1.6; max-width: 300px;">Attention...Academics...Knowledge</p>
         </div>
         <div class="footer-col" style="padding-top: 10px;">
           <h4 style="font-size: 1.1rem; color: var(--color-accent-blue);">Quick Links</h4>
@@ -47,7 +47,7 @@ const footerHTML = `
         <div class="footer-col" style="padding-top: 10px;">
           <h4 style="font-size: 1.1rem; color: var(--color-accent-blue);">Contact & Info</h4>
           <ul>
-            <li>Email: <a href="mailto:bikash.roy@zohomail.in">bikash.roy@zohomail.in</a></li>
+            <li>Email: <a href="mailto:info@special5.in">info@special5.in</a></li>
             <li>Phone: +${WHATSAPP_NUMBER}</li>
             <li><a href="contact.html">Send an Inquiry</a></li>
           </ul>
@@ -63,13 +63,9 @@ const footerHTML = `
 // Floating Buttons & Modals HTML
 const floatingButtonsHTML = `
   <!-- Floating Buttons -->
-  <button class="floating-btn floating-btn-teacher attractive-btn collapsible-btn" onclick="openModal('teacherModal')">
+  <button class="floating-btn floating-btn-teacher attractive-btn" onclick="openModal('teacherModal')">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    <span class="btn-text" style="display: inline-block; vertical-align: middle;">Join Us</span>
-  </button>
-  <button class="floating-btn floating-btn-student attractive-btn" onclick="openModal('studentModal')">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-    <span class="btn-text">Book Special Class</span>
+    <span style="display: inline-block; vertical-align: middle;">Join Us</span>
   </button>
   <button class="floating-btn floating-btn-whyus attractive-btn" onclick="openModal('whyUsModal')">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -343,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Inject Floating WhatsApp Button
   const whatsappBtn = document.createElement('a');
-  whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+  whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%20want%20to%20register%20as%20a%20student.`;
   whatsappBtn.className = 'whatsapp-float';
   whatsappBtn.target = '_blank';
   whatsappBtn.innerHTML = `
