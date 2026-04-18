@@ -497,6 +497,34 @@ async function submitToWhatsApp(event, type) {
     payload.mode = mode;
     
     message = `*Teacher Application*\n\n*Name:* ${name}\n*Email:* ${email}\n*Qualification:* ${qual}\n*Subjects:* ${subs}\n*Classes:* ${classes}\n*Experience:* ${exp} Years\n*Mode:* ${mode}\n*Phone:* ${phone}\n\nI want to join Special5 as a teacher.`;
+    
+    // Non-blocking Supabase insert
+    try {
+      const supabaseTeacherPayload = {
+        name: name,
+        phone: phone,
+        email: email,
+        subjects: subs,
+        classes: classes,
+        experience: exp,
+        salary_per_batch: null,
+        working_status: "new",
+        hiring_status: "pending"
+      };
+
+      fetch("https://pkwbtifellobbvaphigk.supabase.co/rest/v1/teachers", {
+        method: "POST",
+        headers: {
+          "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrd2J0aWZlbGxvYmJ2YXBoaWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzkxMjAsImV4cCI6MjA5MDg1NTEyMH0.hhl5VSl05sUcuC4lsNPzTthZDRWRvIJz3srVyB1txjs",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrd2J0aWZlbGxvYmJ2YXBoaWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzkxMjAsImV4cCI6MjA5MDg1NTEyMH0.hhl5VSl05sUcuC4lsNPzTthZDRWRvIJz3srVyB1txjs",
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(supabaseTeacherPayload)
+      }).catch(err => console.error("Error logging teacher to Supabase:", err));
+    } catch (e) {
+      console.error("Failed to initiate teacher Supabase insert:", e);
+    }
   }
   
   // 1. Send data to Google Sheets silently via POST
