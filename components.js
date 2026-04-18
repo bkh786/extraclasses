@@ -435,14 +435,43 @@ async function submitToWhatsApp(event, type) {
     const mode = document.getElementById('s_mode').value;
     const phone = document.getElementById('s_phone').value;
     
-    payload.name = name;
-    payload.email = email;
-    payload.class = cls;
-    payload.subjects = subs;
-    payload.mode = mode;
-    payload.phone = phone;
+    const supabasePayload = {
+      student_name: name,
+      phone: phone,
+      class: cls,
+      subjects: subs,
+      email_id: email,
+      mode: mode,
+      source: "website",
+      status: "new",
+      demo_status: "pending",
+      conversion_status: "pending"
+    };
+
+    try {
+      const response = await fetch("https://pkwbtifellobbvaphigk.supabase.co/rest/v1/leads", {
+        method: "POST",
+        headers: {
+          "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrd2J0aWZlbGxvYmJ2YXBoaWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzkxMjAsImV4cCI6MjA5MDg1NTEyMH0.hhl5VSl05sUcuC4lsNPzTthZDRWRvIJz3srVyB1txjs",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrd2J0aWZlbGxvYmJ2YXBoaWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzkxMjAsImV4cCI6MjA5MDg1NTEyMH0.hhl5VSl05sUcuC4lsNPzTthZDRWRvIJz3srVyB1txjs",
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(supabasePayload)
+      });
+      
+      if (!response.ok) throw new Error("Supabase API error");
+      alert("Demo request submitted successfully");
+    } catch (error) {
+      console.error("Error logging to Supabase", error);
+      alert("Something went wrong");
+    }
     
-    message = `*New Student Registration*\n\n*Name:* ${name}\n*Email:* ${email}\n*Class:* ${cls}\n*Subjects:* ${subs}\n*Mode:* ${mode}\n*Phone:* ${phone}\n\nI would like to book a free demo class.`;
+    submitBtn.innerText = originalBtnText;
+    submitBtn.disabled = false;
+    closeModal('studentModal');
+    event.target.reset();
+    return;
   } else if (type === 'teacher') {
     const name = document.getElementById('t_name').value;
     const email = document.getElementById('t_email').value;
