@@ -14,7 +14,7 @@ const navbarHTML = `
         <a href="contact.html" class="nav-link">Contact Us</a>
         <a href="online-classes.html" class="nav-link">Why Online Classes</a>
         <a href="faq.html" class="nav-link">FAQ</a>
-        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 15px;" onclick="openModal('studentModal')">Book a Demo Class</button>
+        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 15px;" onclick="openModal('studentModal')">Book a Free Demo Class</button>
       </div>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
@@ -113,13 +113,7 @@ const floatingButtonsHTML = `
             <label class="checkbox-item"><input type="checkbox" name="s_subject" value="Computers"> Computers</label>
           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Preferred Mode *</label>
-          <select id="s_mode" class="form-control" required>
-             <option value="">Select Option</option>
-             <option value="Online">Online</option>
-             <option value="Offline">Offline</option>
-        </div>
+        <input type="hidden" id="s_mode" value="Online">
         <div class="form-group">
           <label class="form-label">Phone Number *</label>
           <input type="tel" id="s_phone" class="form-control" required>
@@ -187,15 +181,7 @@ const floatingButtonsHTML = `
           <label class="form-label">Phone Number *</label>
           <input type="tel" id="t_phone" class="form-control" required>
         </div>
-        <div class="form-group">
-          <label class="form-label">Mode of Teaching *</label>
-          <select id="t_mode" class="form-control" required>
-             <option value="">Select Option</option>
-             <option value="Online">Online</option>
-             <option value="Offline">Offline</option>
-             <option value="Both">Both</option>
-          </select>
-        </div>
+        <input type="hidden" id="t_mode" value="Online">
         <div class="form-disclaimer">
           <label class="disclaimer-item">
             <input type="checkbox" id="t_disclaimer1" onchange="validateForm('teacher')">
@@ -269,7 +255,7 @@ const floatingButtonsHTML = `
               <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
             </tr>
             <tr style="background: var(--color-soft-grey);">
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Online Option</td>
+              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Live Online Focus</td>
               <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Limited</td>
               <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
             </tr>
@@ -286,7 +272,7 @@ const floatingButtonsHTML = `
         <p style="font-size: 1.3rem; font-weight: bold; color: var(--color-accent-blue); text-align: center; margin: 30px 0;">Give your child the advantage of learning in a small batch with personal attention.</p>
         
         <div style="text-align: center; margin-bottom: 40px;">
-          <button class="btn btn-primary attractive-btn" style="padding: 16px 32px; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3); border-radius: 50px; position: relative; overflow: hidden;" onclick="closeModal('whyUsModal'); openModal('studentModal');">Book 2 Free Demo Classes Today</button>
+          <button class="btn btn-primary attractive-btn" style="padding: 16px 32px; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3); border-radius: 50px; position: relative; overflow: hidden;" onclick="closeModal('whyUsModal'); openModal('studentModal');">Book a Free Demo Class Today</button>
         </div>
 
         <hr style="margin: 30px 0; border-top: 1px solid rgba(0,0,0,0.1);">
@@ -305,22 +291,18 @@ const floatingButtonsHTML = `
         <h3 style="color: var(--color-accent-blue); margin-top: 25px;">4. Homework & School Support</h3>
         <p>We help students with homework, school concepts, and exam preparation.</p>
 
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">5. 2 Free Demo Classes</h3>
-        <p>Students can attend 2 free demo classes before joining to experience our teaching.</p>
-        
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">6. Online + Offline Classes</h3>
-        <p>Students can choose online classes or nearby offline classes as per convenience.</p>
-        
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">7. Verified Teachers</h3>
+        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">5. Free Demo Class</h3>
+        <p>Students can attend a free demo class before joining to experience our teaching.</p>
+        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">6. Verified Teachers</h3>
         <p>All teachers go through screening and demo evaluation before teaching.</p>
 
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">8. Parent Feedback & Support</h3>
+        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">7. Parent Feedback & Support</h3>
         <p>Parents can regularly share feedback, track progress, and communicate with us.</p>
 
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">9. Structured Class Method</h3>
+        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">8. Structured Class Method</h3>
         <p>Each class includes homework support + concept teaching + practice in a structured format.</p>
         
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">10. Focus on Academic Improvement</h3>
+        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">9. Focus on Academic Improvement</h3>
         <p>Our goal is not just teaching, but improving marks, concepts, and student confidence. <strong>Special5 is a complete academic support system.</strong></p>
 
       </div>
