@@ -119,13 +119,22 @@ const floatingButtonsHTML = `
              <option value="">Select Option</option>
              <option value="Online">Online</option>
              <option value="Offline">Offline</option>
-          </select>
         </div>
         <div class="form-group">
           <label class="form-label">Phone Number *</label>
           <input type="tel" id="s_phone" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%">Register on WhatsApp</button>
+        <div class="form-disclaimer">
+          <label class="disclaimer-item">
+            <input type="checkbox" id="s_disclaimer1" onchange="validateForm('student')">
+            By using this website, you agree to and accept all information, terms, and updates provided herein.
+          </label>
+          <label class="disclaimer-item">
+            <input type="checkbox" id="s_disclaimer2" onchange="validateForm('student')">
+            By submitting your details, you consent to receive service-related updates and confirmations via WhatsApp from Special5.
+          </label>
+        </div>
+        <button type="submit" id="s_submit" class="btn btn-primary" style="width: 100%" disabled>Register on WhatsApp</button>
       </form>
     </div>
   </div>
@@ -187,7 +196,17 @@ const floatingButtonsHTML = `
              <option value="Both">Both</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%">Submit via WhatsApp</button>
+        <div class="form-disclaimer">
+          <label class="disclaimer-item">
+            <input type="checkbox" id="t_disclaimer1" onchange="validateForm('teacher')">
+            By using this website, you agree to and accept all information, terms, and updates provided herein.
+          </label>
+          <label class="disclaimer-item">
+            <input type="checkbox" id="t_disclaimer2" onchange="validateForm('teacher')">
+            By submitting your details, you consent to receive service-related updates and confirmations via WhatsApp from Special5.
+          </label>
+        </div>
+        <button type="submit" id="t_submit" class="btn btn-primary" style="width: 100%" disabled>Submit via WhatsApp</button>
       </form>
     </div>
   </div>
@@ -384,6 +403,17 @@ function closeModal(modalId) {
   if(modal) {
     modal.classList.remove('active');
     document.body.style.overflow = '';
+  }
+}
+
+// Form Validation for Disclaimers
+function validateForm(type) {
+  const checkbox1 = document.getElementById(type === 'student' ? 's_disclaimer1' : (type === 'teacher' ? 't_disclaimer1' : 'c_disclaimer1'));
+  const checkbox2 = document.getElementById(type === 'student' ? 's_disclaimer2' : (type === 'teacher' ? 't_disclaimer2' : 'c_disclaimer2'));
+  const submitBtn = document.getElementById(type === 'student' ? 's_submit' : (type === 'teacher' ? 't_submit' : 'c_submit'));
+  
+  if (checkbox1 && checkbox2 && submitBtn) {
+    submitBtn.disabled = !(checkbox1.checked && checkbox2.checked);
   }
 }
 

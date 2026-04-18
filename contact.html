@@ -139,7 +139,17 @@
               <label class="form-label">Your Message</label>
               <textarea id="c_message" class="form-control" placeholder="Any specific requirements or questions?"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.1rem;">Send via WhatsApp</button>
+            <div class="form-disclaimer">
+              <label class="disclaimer-item">
+                <input type="checkbox" id="c_disclaimer1" onchange="validateForm('contact')">
+                By using this website, you agree to and accept all information, terms, and updates provided herein.
+              </label>
+              <label class="disclaimer-item">
+                <input type="checkbox" id="c_disclaimer2" onchange="validateForm('contact')">
+                By submitting your details, you consent to receive service-related updates and confirmations via WhatsApp from Special5.
+              </label>
+            </div>
+            <button type="submit" id="c_submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.1rem;" disabled>Send via WhatsApp</button>
           </form>
         </div>
       </div>
