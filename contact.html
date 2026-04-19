@@ -200,13 +200,41 @@
           },
           body: JSON.stringify(supabasePayload)
         });
-        
-        if (!response.ok) throw new Error("Supabase API error");
-        alert("Demo request submitted successfully");
       } catch (error) {
         console.error("Error logging to Supabase", error);
-        alert("Something went wrong");
       }
+      
+      // 1. Send data to Google Sheets
+      const googlePayload = {
+        type: 'contact',
+        student_name: sName,
+        parent_name: pName,
+        email: email,
+        phone: phone,
+        class: cls,
+        mode: mode,
+        subjects: subs,
+        message: msg
+      };
+      
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx75FM_AqMAjYs9dtYqEhrXGHcVp_JIwjUmFIaIWtDE7K6Pow7EtVPS3JUJn1675h5vwg/exec";
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(googlePayload)
+        });
+      } catch (error) {
+        console.error("Error logging to Google Sheets", error);
+      }
+
+      // 2. WhatsApp Redirect
+      const WHATSAPP_NUMBER = "919064435909";
+      const whatsappMessage = `*Contact Form Inquiry*\n\n*Student Name:* ${sName}\n*Parent Name:* ${pName}\n*Email:* ${email}\n*Class:* ${cls}\n*Subjects:* ${subs}\n*Mode:* ${mode}\n*Phone:* ${phone}\n\n*Message:* ${msg}`;
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, '_blank');
       
       submitBtn.innerText = originalBtnText;
       submitBtn.disabled = false;

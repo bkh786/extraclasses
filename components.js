@@ -14,7 +14,8 @@ const navbarHTML = `
         <a href="contact.html" class="nav-link">Contact Us</a>
         <a href="online-classes.html" class="nav-link">Why Online Classes</a>
         <a href="faq.html" class="nav-link">FAQ</a>
-        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 15px;" onclick="openModal('studentModal')">Book a Free Demo Class</button>
+        <a href="https://crm.special5.in/login" class="btn" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 15px; background: var(--color-soft-grey, #f0f4f8); color: var(--color-accent-blue, #0066cc); border: 1px solid var(--color-accent-blue, #0066cc); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 600; border-radius: 5px; transition: all 0.3s ease;">Login</a>
+        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 10px;" onclick="openModal('studentModal')">Book a Free Demo Class</button>
       </div>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
