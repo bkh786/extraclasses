@@ -367,6 +367,9 @@
         qData.option4 || qData.option_d
       ];
       
+      // Filter out empty options and randomize their display order
+      const shuffledOptions = options.filter(opt => opt).sort(() => Math.random() - 0.5);
+      
       // Resolve correct answer literal string. 
       // E.g., if correct_answer is "option1", actual text is qData["option1"]
       let actualCorrectAnswer = qData.correct_answer;
@@ -374,8 +377,7 @@
         actualCorrectAnswer = qData[qData.correct_answer];
       }
       
-      options.forEach((opt, idx) => {
-        if (!opt) return;
+      shuffledOptions.forEach((opt, idx) => {
         const btn = document.createElement('button');
         btn.className = "option-btn";
         btn.innerText = opt;
