@@ -15,7 +15,7 @@ const navbarHTML = `
         <a href="online-classes.html" class="nav-link">Why Online Classes</a>
         <a href="faq.html" class="nav-link">FAQ</a>
         <a href="https://crm.special5.in/login" class="btn" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 15px; background: var(--color-soft-grey, #f0f4f8); color: var(--color-accent-blue, #0066cc); border: 1px solid var(--color-accent-blue, #0066cc); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 600; border-radius: 5px; transition: all 0.3s ease;">Login</a>
-        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 10px;" onclick="openModal('studentModal')">Book a Free Demo Class</button>
+        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.95rem; margin-left: 10px;" onclick="window.location.href='contact.html'">Book a Free Demo Class</button>
       </div>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
@@ -68,71 +68,12 @@ const floatingButtonsHTML = `
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     <span style="display: inline-block; vertical-align: middle;">Join Us</span>
   </button>
-  <button class="floating-btn floating-btn-whyus attractive-btn" onclick="openModal('whyUsModal')">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    Why Us?
+  <button class="floating-btn floating-btn-whyus attractive-btn" onclick="window.location.href='assessment.html'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15 l2 2 4-4"/></svg>
+    Free Assessment
   </button>
 
-  <!-- Student Registration Modal -->
-  <div class="modal-overlay" id="studentModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('studentModal')">&times;</button>
-      <h2>Book Free Demo Class</h2>
-      <p>Fill out this form to register as a student.</p>
-      <form onsubmit="submitToWhatsApp(event, 'student')">
-        <div class="form-group">
-          <label class="form-label">Student Name *</label>
-          <input type="text" id="s_name" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email ID *</label>
-          <input type="email" id="s_email" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Class *</label>
-          <select id="s_class" class="form-control" required>
-            <option value="">Select Class</option>
-            <option value="Class 1">Class 1</option>
-            <option value="Class 2">Class 2</option>
-            <option value="Class 3">Class 3</option>
-            <option value="Class 4">Class 4</option>
-            <option value="Class 5">Class 5</option>
-            <option value="Class 6">Class 6</option>
-            <option value="Class 7">Class 7</option>
-            <option value="Class 8">Class 8</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Subjects * (Select all that apply)</label>
-          <div class="checkbox-group" id="s_subjects_group">
-            <label class="checkbox-item"><input type="checkbox" name="s_subject" value="All Subject"> All Subject</label>
-            <label class="checkbox-item"><input type="checkbox" name="s_subject" value="English"> English</label>
-            <label class="checkbox-item"><input type="checkbox" name="s_subject" value="Hindi"> Hindi</label>
-            <label class="checkbox-item"><input type="checkbox" name="s_subject" value="Maths"> Maths</label>
-            <label class="checkbox-item"><input type="checkbox" name="s_subject" value="Science"> Science</label>
-            <label class="checkbox-item"><input type="checkbox" name="s_subject" value="Social Science"> Social Science</label>
-            <label class="checkbox-item"><input type="checkbox" name="s_subject" value="Computers"> Computers</label>
-          </div>
-        </div>
-        <input type="hidden" id="s_mode" value="Online">
-        <div class="form-group">
-          <label class="form-label">Phone Number *</label>
-          <input type="tel" id="s_phone" class="form-control" required>
-        </div>
-        <div class="form-disclaimer">
-          <label class="disclaimer-item">
-            <input type="checkbox" id="s_disclaimer1" onchange="validateForm('student')">
-            By using this website, you agree to and accept all information, terms, and updates provided herein.
-          </label>
-          <label class="disclaimer-item">
-            <input type="checkbox" id="s_disclaimer2" onchange="validateForm('student')">
-            By submitting your details, you consent to receive service-related updates and confirmations via WhatsApp from Special5.
-          </label>
-        </div>
-        <button type="submit" id="s_submit" class="btn btn-primary" style="width: 100%" disabled>Register on WhatsApp</button>
-      </form>
-    </div>
-  </div>
+
 
   <!-- Teacher Registration Modal -->
   <div class="modal-overlay" id="teacherModal">
@@ -198,117 +139,7 @@ const floatingButtonsHTML = `
     </div>
   </div>
 
-  <!-- Why Us Modal -->
-  <div class="modal-overlay" id="whyUsModal">
-    <div class="modal-content" style="max-width: 800px; text-align: left;">
-      <button class="modal-close" onclick="closeModal('whyUsModal')">&times;</button>
-      
-      <div style="font-size: 1.1rem; line-height: 1.7; color: var(--color-dark-blue);">
-        <h2 style="color: var(--color-accent-blue); font-size: 2.2rem; margin-bottom: 5px;">Why Choose Special5</h2>
-        <h3 style="font-size: 1.2rem; color: var(--color-dark-grey); margin-bottom: 20px;">Not Just Tuition. A Structured Academic Support System.</h3>
-        
-        <hr style="margin: 30px 0; border-top: 1px solid rgba(0,0,0,0.1);">
-        
-        <h2 style="font-size: 1.8rem; margin-bottom: 20px;">Special5 vs Traditional Tuition</h2>
-        
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; border: 1px solid rgba(0,0,0,0.1);">
-          <thead>
-            <tr style="background: var(--color-accent-blue); color: white;">
-              <th style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Feature</th>
-              <th style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Traditional Tuition</th>
-              <th style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Special5</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Batch Size</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">10–20 Students</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold;">Max 5 Students</td>
-            </tr>
-            <tr style="background: var(--color-soft-grey);">
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Personal Attention</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Limited</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">High</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Homework Support</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Sometimes</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
-            </tr>
-            <tr style="background: var(--color-soft-grey);">
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Monthly Test</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Rare</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Progress Report</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">No</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
-            </tr>
-            <tr style="background: var(--color-soft-grey);">
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Parent Feedback</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">No</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Demo Classes</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Rare</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
-            </tr>
-            <tr style="background: var(--color-soft-grey);">
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Live Online Focus</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Limited</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">Structured System</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1);">No</td>
-              <td style="padding: 12px; border: 1px solid rgba(0,0,0,0.1); font-weight: bold; color: #34c759;">Yes</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <h2 style="font-size: 1.8rem; margin-bottom: 20px;">Message to Parents</h2>
-        <p>If you are looking for Personal attention for your child, Small batch tuition, Regular tests and progress reports, Homework and school support, and Structured academic improvement, then <strong>Special5</strong> is the right place for your child.</p>
-        <p style="font-size: 1.3rem; font-weight: bold; color: var(--color-accent-blue); text-align: center; margin: 30px 0;">Give your child the advantage of learning in a small batch with personal attention.</p>
-        
-        <div style="text-align: center; margin-bottom: 40px;">
-          <button class="btn btn-primary attractive-btn" style="padding: 16px 32px; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3); border-radius: 50px; position: relative; overflow: hidden;" onclick="closeModal('whyUsModal'); openModal('studentModal');">Book a Free Demo Class Today</button>
-        </div>
 
-        <hr style="margin: 30px 0; border-top: 1px solid rgba(0,0,0,0.1);">
-        
-        <h2 style="font-size: 1.8rem; margin-bottom: 20px;">Our Key Advantages</h2>
-        
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">1. Small Batch Size</h3>
-        <p>Maximum 5 students per batch so that every student gets personal attention and can ask doubts freely.</p>
-
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">2. Personal Attention</h3>
-        <p>Teachers focus on concept clarity, weak subjects, and individual improvement of each student.</p>
-        
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">3. Monthly Test & Progress Report</h3>
-        <p>We conduct monthly assessments and share progress reports with parents to track improvement.</p>
-        
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">4. Homework & School Support</h3>
-        <p>We help students with homework, school concepts, and exam preparation.</p>
-
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">5. Free Demo Class</h3>
-        <p>Students can attend a free demo class before joining to experience our teaching.</p>
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">6. Verified Teachers</h3>
-        <p>All teachers go through screening and demo evaluation before teaching.</p>
-
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">7. Parent Feedback & Support</h3>
-        <p>Parents can regularly share feedback, track progress, and communicate with us.</p>
-
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">8. Structured Class Method</h3>
-        <p>Each class includes homework support + concept teaching + practice in a structured format.</p>
-        
-        <h3 style="color: var(--color-accent-blue); margin-top: 25px;">9. Focus on Academic Improvement</h3>
-        <p>Our goal is not just teaching, but improving marks, concepts, and student confidence. <strong>Special5 is a complete academic support system.</strong></p>
-
-      </div>
-    </div>
-  </div>
 `;
 
 // Initialize App

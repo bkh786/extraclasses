@@ -127,14 +127,6 @@
             <input type="text" id="a_name" class="form-control" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Email ID *</label>
-            <input type="email" id="a_email" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Phone Number *</label>
-            <input type="tel" id="a_phone" class="form-control" required>
-          </div>
-          <div class="form-group">
             <label class="form-label">Class *</label>
             <select id="a_class" class="form-control" required>
               <option value="">Select Class</option>
@@ -162,7 +154,11 @@
 
       <!-- STEP 3: Quiz UI -->
       <div id="step-quiz" class="assessment-card hidden">
-        <div class="progress-text" id="q_progress">Question 1 of 10</div>
+        <div style="display: flex; justify-content: space-between; font-weight: 500; color: var(--color-dark-grey); margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+          <span id="q_context_name"></span>
+          <span id="q_context_class"></span>
+        </div>
+        <div class="progress-text" id="q_progress" style="margin-top: 15px;">Question 1 of 10</div>
         <div class="question-box" id="q_text">Loading question...</div>
         
         <div id="q_options">
@@ -221,14 +217,16 @@
       btn.disabled = true;
 
       const name = document.getElementById('a_name').value;
-      const email = document.getElementById('a_email').value;
-      const phone = document.getElementById('a_phone').value;
       const cls = document.getElementById('a_class').value;
 
-      AssessmentState.studentData = { name, email, phone, cls };
+      AssessmentState.studentData = { name, cls };
 
-      // 1. Send Lead to Supabase & GAS (Non-blocking / Background)
-      pushLeadData(name, email, phone, cls);
+      // Set explicit context tracking UI for Quiz
+      document.getElementById('q_context_name').innerText = name;
+      document.getElementById('q_context_class').innerText = cls;
+
+      // Ensure API formatting maps to database (console check requested)
+      console.log(`Starting assessment for ${name} in ${cls}`);
 
       // 2. Fetch Questions & Transition View
       showStep('step-loading');
@@ -411,25 +409,22 @@
             <li><span style="color: #4caf50; font-size: 1.5rem;">✓</span> True concept clarity</li>
             <li><span style="color: #4caf50; font-size: 1.5rem;">✓</span> Performance tracking</li>
           </ul>
-          <button class="btn btn-primary" style="padding: 18px 40px; font-size: 1.25rem; font-weight: 600; margin-top: 20px; box-shadow: var(--shadow-md);" onclick="triggerDemoBooking()">Book a Free Demo Class</button>
+          <button class="btn btn-primary" style="padding: 18px 40px; font-size: 1.25rem; font-weight: 600; margin-top: 20px; box-shadow: var(--shadow-md);" onclick="triggerDemoBooking()">Register Now</button>
         `;
       } else {
         ctaBlock.innerHTML = `
           <h3 style="font-size: 1.8rem; color: #4caf50; margin-bottom: 20px;">Excellent performance! 🎉</h3>
           <p style="font-size: 1.2rem; margin-bottom: 30px;">You have a great foundation. Take it to the next level with our advanced batch.</p>
-          <button class="btn btn-primary" style="padding: 18px 40px; font-size: 1.25rem; font-weight: 600; margin-top: 10px; box-shadow: var(--shadow-md);" onclick="triggerDemoBooking()">Enroll for Advanced Learning</button>
+          <button class="btn btn-primary" style="padding: 18px 40px; font-size: 1.25rem; font-weight: 600; margin-top: 10px; box-shadow: var(--shadow-md);" onclick="triggerDemoBooking()">Register Now</button>
         `;
       }
     }
 
     function triggerDemoBooking() {
-      // Re-trigger standard WhatsApp/Demo flow or open the modal if present globally
-      if (typeof openModal === "function") {
-        openModal("studentModal");
-      } else {
-        // Fallback generic redirection if modal logic is missing
-        window.location.href = "index.html";
-      }
+      // Pass the contextual payload straight to the centralized registration route via query params
+      const qName = encodeURIComponent(AssessmentState.studentData.name);
+      const qClass = encodeURIComponent(AssessmentState.studentData.cls);
+      window.location.href = `contact.html?name=${qName}&class=${qClass}`;
     }
 
     // Helper: Mock Questions if Database is entirely Empty 
