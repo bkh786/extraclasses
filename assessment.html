@@ -359,15 +359,27 @@
       const optionsContainer = document.getElementById('q_options');
       optionsContainer.innerHTML = '';
 
-      // Normalize generic option schema into array
-      const options = [qData.option_a, qData.option_b, qData.option_c, qData.option_d];
+      // Normalize generic option schema into array (supports both Option1 and Option_A schema patterns)
+      const options = [
+        qData.option1 || qData.option_a, 
+        qData.option2 || qData.option_b, 
+        qData.option3 || qData.option_c, 
+        qData.option4 || qData.option_d
+      ];
+      
+      // Resolve correct answer literal string. 
+      // E.g., if correct_answer is "option1", actual text is qData["option1"]
+      let actualCorrectAnswer = qData.correct_answer;
+      if (typeof qData.correct_answer === 'string' && qData[qData.correct_answer]) {
+        actualCorrectAnswer = qData[qData.correct_answer];
+      }
       
       options.forEach((opt, idx) => {
         if (!opt) return;
         const btn = document.createElement('button');
         btn.className = "option-btn";
         btn.innerText = opt;
-        btn.onclick = () => handleAnswerSelect(opt, qData.correct_answer, btn);
+        btn.onclick = () => handleAnswerSelect(opt, actualCorrectAnswer, btn);
         optionsContainer.appendChild(btn);
       });
     }
