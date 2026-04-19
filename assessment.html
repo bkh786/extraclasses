@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Assessment | Special5 Online Tuitions</title>
+  <meta name="description" content="Take a free personalized assessment to track your child's academic progress with Special5 Online Tuitions.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="components.js" defer></script>
+  <style>
+    /* Assessment Specific Styles */
+    .assessment-card {
+      background: var(--color-white);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .question-box {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-dark-blue);
+      margin-bottom: 30px;
+    }
+    
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 18px 24px;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      background: var(--color-soft-grey);
+      border: 2px solid transparent;
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      color: var(--color-dark-grey);
+    }
+    
+    .option-btn:hover:not(:disabled) {
+      background: var(--color-light-blue);
+      border-color: var(--color-accent-blue);
+      color: var(--color-accent-blue);
+    }
+    
+    .option-btn.correct {
+      background: #e8f5e9;
+      border-color: #4caf50;
+      color: #2e7d32;
+    }
+    
+    .option-btn.wrong {
+      background: #ffebee;
+      border-color: #f44336;
+      color: #c62828;
+    }
+    
+    .option-btn:disabled {
+      cursor: default;
+      opacity: 0.8;
+    }
+    
+    .progress-text {
+      text-align: right;
+      font-weight: 600;
+      color: var(--color-accent-blue);
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .feedback-msg {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 20px 0;
+      min-height: 30px;
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+    
+    /* Result Section */
+    .result-score {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--color-accent-blue);
+      margin: 20px 0;
+    }
+    
+    .usp-list {
+      list-style: none;
+      padding: 0;
+      margin: 30px auto;
+      max-width: 400px;
+      text-align: left;
+      font-size: 1.2rem;
+    }
+    
+    .usp-list li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Padding -->
+  <div style="padding-top: 80px;"></div>
+
+  <section class="section section-light" id="assessment-section" style="min-height: calc(100vh - 80px); display: flex; align-items: center;">
+    <div class="container fade-in-section" style="width: 100%;">
+      
+      <!-- STEP 1: Registration Form -->
+      <div id="step-form" class="assessment-card">
+        <h1 class="display-2 text-center" style="margin-bottom: 10px;">Free Skill Assessment</h1>
+        <p class="text-center" style="margin-bottom: 30px; font-size: 1.1rem; color: var(--color-dark-grey);">Provide your details to start the personalized gamified quiz tailored for your class.</p>
+        
+        <form id="assessmentForm" onsubmit="handleAssessmentStart(event)">
+          <div class="form-group">
+            <label class="form-label">Student Name *</label>
+            <input type="text" id="a_name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email ID *</label>
+            <input type="email" id="a_email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <input type="tel" id="a_phone" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Class *</label>
+            <select id="a_class" class="form-control" required>
+              <option value="">Select Class</option>
+              <option value="Class 1">Class 1</option>
+              <option value="Class 2">Class 2</option>
+              <option value="Class 3">Class 3</option>
+              <option value="Class 4">Class 4</option>
+              <option value="Class 5">Class 5</option>
+              <option value="Class 6">Class 6</option>
+              <option value="Class 7">Class 7</option>
+              <option value="Class 8">Class 8</option>
+            </select>
+          </div>
+          <button type="submit" id="a_submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.2rem; margin-top: 20px;">Start Assessment</button>
+        </form>
+      </div>
+
+      <!-- STEP 2: Loading State -->
+      <div id="step-loading" class="assessment-card hidden text-center">
+        <h2 class="display-2" style="margin-bottom: 20px;">Loading your Assessment...</h2>
+        <p>Curating the best questions for your class level.</p>
+        <div style="margin: 40px auto; width: 50px; height: 50px; border: 5px solid var(--color-soft-grey); border-top: 5px solid var(--color-accent-blue); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
+      </div>
+
+      <!-- STEP 3: Quiz UI -->
+      <div id="step-quiz" class="assessment-card hidden">
+        <div class="progress-text" id="q_progress">Question 1 of 10</div>
+        <div class="question-box" id="q_text">Loading question...</div>
+        
+        <div id="q_options">
+          <!-- Options injected via JS -->
+        </div>
+        
+        <div class="feedback-msg" id="q_feedback"></div>
+        
+        <button id="btn-next" class="btn btn-primary hidden" style="width: 100%; padding: 16px; font-size: 1.2rem; margin-top: 20px;" onclick="loadNextQuestion()">Next Question</button>
+      </div>
+
+      <!-- STEP 4: Results UI -->
+      <div id="step-results" class="assessment-card hidden text-center">
+        <h2 class="display-2">Assessment Complete!</h2>
+        <div class="result-score" id="r_score">0 / 10</div>
+        
+        <!-- Conditional CTA Block -->
+        <div id="r_cta_block">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // App State
+    const AssessmentState = {
+      questions: [],
+      currentIndex: 0,
+      score: 0,
+      studentData: null,
+      maxQuestions: 10
+    };
+
+    // Supabase Credentials
+    const SUPABASE_URL = "https://pkwbtifellobbvaphigk.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrd2J0aWZlbGxvYmJ2YXBoaWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzkxMjAsImV4cCI6MjA5MDg1NTEyMH0.hhl5VSl05sUcuC4lsNPzTthZDRWRvIJz3srVyB1txjs";
+    // Reuse from components.js or redefine
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbx75FM_AqMAjYs9dtYqEhrXGHcVp_JIwjUmFIaIWtDE7K6Pow7EtVPS3JUJn1675h5vwg/exec";
+
+    // Utility to show/hide sections
+    function showStep(stepId) {
+      ['step-form', 'step-loading', 'step-quiz', 'step-results'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(stepId).classList.remove('hidden');
+    }
+
+    // Step 1 Submission Handler
+    async function handleAssessmentStart(event) {
+      event.preventDefault();
+      
+      const btn = document.getElementById('a_submit');
+      btn.innerText = "Please wait...";
+      btn.disabled = true;
+
+      const name = document.getElementById('a_name').value;
+      const email = document.getElementById('a_email').value;
+      const phone = document.getElementById('a_phone').value;
+      const cls = document.getElementById('a_class').value;
+
+      AssessmentState.studentData = { name, email, phone, cls };
+
+      // 1. Send Lead to Supabase & GAS (Non-blocking / Background)
+      pushLeadData(name, email, phone, cls);
+
+      // 2. Fetch Questions & Transition View
+      showStep('step-loading');
+      await fetchQuestions(cls);
+    }
+
+    // Lead Integration Flow
+    async function pushLeadData(name, email, phone, cls) {
+      try {
+        // Supabase Lead Push
+        const supabasePayload = {
+          student_name: name,
+          class: cls,
+          phone: phone,
+          email_id: email,
+          source: "assessment",
+          status: "new",
+          demo_status: "pending",
+          conversion_status: "pending"
+        };
+
+        fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${SUPABASE_KEY}`,
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(supabasePayload)
+        }).catch(err => console.error("Supabase Leads push error:", err));
+
+        // Google Sheets Integration (same payload logic as main site forms)
+        const googlePayload = {
+          type: 'student',
+          name: name,
+          email: email,
+          class: cls,
+          phone: phone,
+          mode: 'Online',
+          subjects: 'Assessment Route'
+        };
+
+        fetch(GAS_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(googlePayload)
+        }).catch(err => console.error("Google Sheets push error:", err));
+
+        // Note: Supressing the window.open(whatsapp) redirect here specifically so 
+        // they can immediately jump into the Quiz UI.
+      } catch (error) {
+        console.error("Lead integration failed silently:", error);
+      }
+    }
+
+    // Fetch Questions Logic
+    async function fetchQuestions(cls) {
+      try {
+        const url = `${SUPABASE_URL}/rest/v1/questions?class=eq.${encodeURIComponent(cls)}&select=*&limit=50`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${SUPABASE_KEY}`,
+            "Content-Type": "application/json"
+          }
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch questions");
+        const data = await response.json();
+
+        if (!data || data.length === 0) {
+          // Fallback if no questions exist for this class
+          const mockData = generateFallbackQuestions(cls);
+          AssessmentState.questions = mockData;
+        } else {
+          // Shuffle and pick up to 10
+          AssessmentState.questions = data.sort(() => 0.5 - Math.random()).slice(0, AssessmentState.maxQuestions);
+        }
+
+        AssessmentState.maxQuestions = AssessmentState.questions.length;
+        renderQuestion();
+        showStep('step-quiz');
+
+      } catch (err) {
+        console.error(err);
+        // Load fallback if API strictly fails so UX doesn't freeze
+        AssessmentState.questions = generateFallbackQuestions(cls);
+        AssessmentState.maxQuestions = AssessmentState.questions.length;
+        renderQuestion();
+        showStep('step-quiz');
+      }
+    }
+
+    // Render Quiz Question
+    function renderQuestion() {
+      const qData = AssessmentState.questions[AssessmentState.currentIndex];
+      
+      document.getElementById('q_progress').innerText = `Question ${AssessmentState.currentIndex + 1} of ${AssessmentState.maxQuestions}`;
+      document.getElementById('q_text').innerText = qData.question || "Unable to parse question text.";
+      document.getElementById('q_feedback').innerText = "";
+      document.getElementById('btn-next').classList.add('hidden');
+
+      const optionsContainer = document.getElementById('q_options');
+      optionsContainer.innerHTML = '';
+
+      // Normalize generic option schema into array
+      const options = [qData.option_a, qData.option_b, qData.option_c, qData.option_d];
+      
+      options.forEach((opt, idx) => {
+        if (!opt) return;
+        const btn = document.createElement('button');
+        btn.className = "option-btn";
+        btn.innerText = opt;
+        btn.onclick = () => handleAnswerSelect(opt, qData.correct_answer, btn);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    // Answer Selection Logic
+    function handleAnswerSelect(selected, correct, clickedBtn) {
+      // 1. Lock all buttons
+      const allBtns = document.querySelectorAll('.option-btn');
+      allBtns.forEach(b => b.disabled = true);
+
+      const feedback = document.getElementById('q_feedback');
+
+      // 2. Evaluate & Highlight
+      // Some DBs might store 'A', 'B' instead of the literal text. If DB stores textual correct_answer, direct check:
+      const matches = (selected.trim().toLowerCase() === correct.trim().toLowerCase());
+      
+      if (matches) {
+        clickedBtn.classList.add('correct');
+        feedback.innerText = "Correct! ✅";
+        feedback.style.color = "#2e7d32";
+        AssessmentState.score++;
+      } else {
+        clickedBtn.classList.add('wrong');
+        feedback.innerText = "Incorrect! ❌";
+        feedback.style.color = "#c62828";
+        
+        // Highlight correct option too
+        allBtns.forEach(b => {
+          if (b.innerText.trim().toLowerCase() === correct.trim().toLowerCase()) {
+            b.classList.add('correct');
+          }
+        });
+      }
+
+      // 3. Show Next button
+      document.getElementById('btn-next').classList.remove('hidden');
+    }
+
+    // Load Next
+    function loadNextQuestion() {
+      AssessmentState.currentIndex++;
+      if (AssessmentState.currentIndex < AssessmentState.maxQuestions) {
+        renderQuestion();
+      } else {
+        renderResults();
+      }
+    }
+
+    // Render Final Results Screen
+    function renderResults() {
+      showStep('step-results');
+      const percentage = Math.round((AssessmentState.score / AssessmentState.maxQuestions) * 100);
+      
+      document.getElementById('r_score').innerText = `${AssessmentState.score} / ${AssessmentState.maxQuestions} (${percentage}%)`;
+
+      const ctaBlock = document.getElementById('r_cta_block');
+      
+      if (AssessmentState.score < AssessmentState.maxQuestions) {
+        ctaBlock.innerHTML = `
+          <h3 style="font-size: 1.8rem; color: var(--color-dark-blue); margin-bottom: 20px;">Improve your score with expert guidance.</h3>
+          <ul class="usp-list">
+            <li><span style="color: #4caf50; font-size: 1.5rem;">✓</span> Personalized attention</li>
+            <li><span style="color: #4caf50; font-size: 1.5rem;">✓</span> Expert teachers</li>
+            <li><span style="color: #4caf50; font-size: 1.5rem;">✓</span> True concept clarity</li>
+            <li><span style="color: #4caf50; font-size: 1.5rem;">✓</span> Performance tracking</li>
+          </ul>
+          <button class="btn btn-primary" style="padding: 18px 40px; font-size: 1.25rem; font-weight: 600; margin-top: 20px; box-shadow: var(--shadow-md);" onclick="triggerDemoBooking()">Book a Free Demo Class</button>
+        `;
+      } else {
+        ctaBlock.innerHTML = `
+          <h3 style="font-size: 1.8rem; color: #4caf50; margin-bottom: 20px;">Excellent performance! 🎉</h3>
+          <p style="font-size: 1.2rem; margin-bottom: 30px;">You have a great foundation. Take it to the next level with our advanced batch.</p>
+          <button class="btn btn-primary" style="padding: 18px 40px; font-size: 1.25rem; font-weight: 600; margin-top: 10px; box-shadow: var(--shadow-md);" onclick="triggerDemoBooking()">Enroll for Advanced Learning</button>
+        `;
+      }
+    }
+
+    function triggerDemoBooking() {
+      // Re-trigger standard WhatsApp/Demo flow or open the modal if present globally
+      if (typeof openModal === "function") {
+        openModal("studentModal");
+      } else {
+        // Fallback generic redirection if modal logic is missing
+        window.location.href = "index.html";
+      }
+    }
+
+    // Helper: Mock Questions if Database is entirely Empty 
+    // (Fail-safe UX to ensure page is demonstrable)
+    function generateFallbackQuestions(cls) {
+      return Array.from({length: 10}).map((_, i) => ({
+        question: `Sample Assessment Question ${i + 1} for ${cls}`,
+        option_a: "Option 1 (Correct)",
+        option_b: "Option 2",
+        option_c: "Option 3",
+        option_d: "Option 4",
+        correct_answer: "Option 1 (Correct)"
+      }));
+    }
+
+  </script>
+</body>
+</html>
