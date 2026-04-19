@@ -211,15 +211,13 @@
 
       // 1. Send data to Google Sheets (Strict First Priority)
       const googlePayload = {
-        type: 'contact',
-        student_name: sName,
-        parent_name: pName,
+        type: 'student',
+        name: `${sName} (Parent: ${pName})`,
         email: email,
-        phone: phone,
         class: cls,
+        phone: phone,
         mode: mode,
-        subjects: subs,
-        message: msg
+        subjects: subs
       };
       
       const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx75FM_AqMAjYs9dtYqEhrXGHcVp_JIwjUmFIaIWtDE7K6Pow7EtVPS3JUJn1675h5vwg/exec";

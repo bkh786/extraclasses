@@ -286,8 +286,10 @@
     // Fetch Questions Logic
     async function fetchQuestions(cls) {
       try {
-        const url = `${SUPABASE_URL}/rest/v1/questions?class=eq.${encodeURIComponent(cls)}&select=*&limit=50`;
-        const response = await fetch(url, {
+        console.log(`[Assessment] Attempting to fetch questions from Supabase for class: '${cls}'`);
+        let url = `${SUPABASE_URL}/rest/v1/questions?class=eq.${encodeURIComponent(cls)}&select=*&limit=50`;
+        
+        let response = await fetch(url, {
           method: "GET",
           headers: {
             "apikey": SUPABASE_KEY,
@@ -296,15 +298,39 @@
           }
         });
 
-        if (!response.ok) throw new Error("Failed to fetch questions");
-        const data = await response.json();
+        if (!response.ok) throw new Error(`[Assessment] HTTP Error fetching specific class: ${response.status}`);
+        let data = await response.json();
+        
+        console.log(`[Assessment] Supabase returned ${data ? data.length : 0} questions for literal match '${cls}'`);
+
+        // If returned empty, try extracting just the number in case the DB schema stores '3' instead of 'Class 3'
+        if ((!data || data.length === 0) && cls.match(/\d+/)) {
+          const classNum = cls.match(/\d+/)[0];
+          console.log(`[Assessment] Trying fallback format match using numeral only: '${classNum}'`);
+          const fallbackUrl = `${SUPABASE_URL}/rest/v1/questions?class=eq.${encodeURIComponent(classNum)}&select=*&limit=50`;
+          
+          response = await fetch(fallbackUrl, {
+            method: "GET",
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization": `Bearer ${SUPABASE_KEY}`,
+              "Content-Type": "application/json"
+            }
+          });
+          
+          if (response.ok) {
+            data = await response.json();
+            console.log(`[Assessment] Supabase returned ${data ? data.length : 0} questions for numeral match '${classNum}'`);
+          }
+        }
 
         if (!data || data.length === 0) {
-          // Fallback if no questions exist for this class
+          console.warn("[Assessment] ⚠️ No questions found in DB exactly matching the 'class' column. Please verify your Supabase Row Level Security (RLS) is permitted for SELECT operations, and that there are populated rows. Displaying Fallback questions.");
           const mockData = generateFallbackQuestions(cls);
           AssessmentState.questions = mockData;
         } else {
-          // Shuffle and pick up to 10
+          console.log("[Assessment] Successfully loaded structured data from DB:", data);
+          // Shuffle and limit up to 10
           AssessmentState.questions = data.sort(() => 0.5 - Math.random()).slice(0, AssessmentState.maxQuestions);
         }
 
@@ -313,8 +339,7 @@
         showStep('step-quiz');
 
       } catch (err) {
-        console.error(err);
-        // Load fallback if API strictly fails so UX doesn't freeze
+        console.error("[Assessment] 🛑 Fatal Network/Fetch Error:", err);
         AssessmentState.questions = generateFallbackQuestions(cls);
         AssessmentState.maxQuestions = AssessmentState.questions.length;
         renderQuestion();
