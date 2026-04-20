@@ -340,8 +340,8 @@ async function submitToWhatsApp(event, type) {
         classes: classes,
         experience: exp,
         salary_per_batch: null,
-        working_status: "new",
-        hiring_status: "pending"
+        working_status: "Active",
+        hiring_status: "applied"
       };
 
       await fetch("https://pkwbtifellobbvaphigk.supabase.co/rest/v1/teachers", {
