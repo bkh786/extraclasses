@@ -110,9 +110,9 @@ const floatingButtonsHTML = `
           <label class="form-label">Classes you can teach *</label>
           <select id="t_classes" class="form-control" required>
             <option value="">Select Classes</option>
-            <option value="Class 1 to 5">Class 1 to 5</option>
-            <option value="Class 6 to 8">Class 6 to 8</option>
-            <option value="Class 1 to 8">Class 1 to 8</option>
+            <option value="Class 1 to 4">Class 1 to 4</option>
+            <option value="Class 5 to 8">Class 5 to 8</option>
+            <option value="Class 9 & 10">Class 9 & 10</option>
           </select>
         </div>
         <div class="form-group">
@@ -391,7 +391,7 @@ async function submitToWhatsApp(event, type) {
 
 // Scroll animation logic
 function setupScrollAnimations() {
-  const elementsToAnimate = document.querySelectorAll('.fade-in-section');
+  const elementsToAnimate = document.querySelectorAll('.fade-in-section, .animate-fade-up, .animate-zoom-in, .animate-slide-left, .animate-slide-right');
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
