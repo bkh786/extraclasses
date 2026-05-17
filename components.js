@@ -6,7 +6,7 @@ const navbarHTML = `
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar-brand">
-        <img src="images/Special5-logo.png" alt="Special5 Logo" style="height: 44px; vertical-align: middle; border-radius: 8px; mix-blend-mode: multiply;">
+        <img src="images/new-logo.png" alt="Special5 Logo" style="height: 44px; vertical-align: middle; border-radius: 8px; mix-blend-mode: multiply;">
       </a>
       <div class="navbar-nav" id="navbarNav">
         <a href="index.html" class="nav-link">Home</a>
@@ -31,7 +31,7 @@ const footerHTML = `
       <div class="footer-grid">
         <div class="footer-col" style="text-align: left;">
           <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-            <img src="images/Special5-logo.png" alt="Special5 Logo" style="height: 64px; width: 64px; object-fit: contain; border-radius: 12px; mix-blend-mode: multiply; background: white; padding: 6px;">
+            <img src="images/new-logo.png" alt="Special5 Logo" style="height: 64px; object-fit: contain; border-radius: 12px; mix-blend-mode: multiply; background: white; padding: 6px;">
             <h3 style="margin-bottom: 0; font-size: 1.6rem;">Special5</h3>
           </div>
           <p style="font-size: 0.95rem; line-height: 1.6; max-width: 300px;">Attention...Academics...Knowledge</p>
@@ -158,13 +158,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   
   // Create wrappers for injected content to keep DOM clean
-  const headerWrapper = document.createElement('div');
-  headerWrapper.innerHTML = navbarHTML;
-  body.insertBefore(headerWrapper, body.firstChild);
+  const isHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html');
   
-  const footerWrapper = document.createElement('div');
-  footerWrapper.innerHTML = footerHTML;
-  body.appendChild(footerWrapper);
+  if (!isHomePage) {
+    const headerWrapper = document.createElement('div');
+    headerWrapper.innerHTML = navbarHTML;
+    body.insertBefore(headerWrapper, body.firstChild);
+    
+    const footerWrapper = document.createElement('div');
+    footerWrapper.innerHTML = footerHTML;
+    body.appendChild(footerWrapper);
+  }
   
   const floatingWrapper = document.createElement('div');
   floatingWrapper.innerHTML = floatingButtonsHTML;
